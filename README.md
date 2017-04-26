@@ -69,13 +69,13 @@ If true, the request must have either `req.connection.authorized` or `req.connec
 
 #### `allowOrigins: {String|Array|RegExp|Function}`
 
-* String: origin is compared against the string for an exact match:
+* __String__: origin is compared against the string for an exact match:
 
 ```javascript
 allowOrigins: 'http://your-url.com',
 ```
 
-* Array: the origin is checked against the string present in the array for an exact match:
+* __Array__: the origin is checked against the string present in the array for an exact match:
 
 ```javascript
 allowOrigins: [
@@ -84,13 +84,13 @@ allowOrigins: [
 ],
 ```
 
-* RegExp: the origin tested against the RegExp using `RegExp.test`:
+* __RegExp__: the origin tested against the RegExp using `RegExp.test`:
 
 ```javascript
 allowOrigins: /^(optionalsubdomain\.)?yoururl\.com$/,
 ```
 
-* Function: The function will be called with the origin as it's only parameter. The function should return a truthy or falsy value:
+* __Function__: The function will be called with the origin as it's only parameter. The function should return a truthy or falsy value:
 ```javascript
 allowOrigins: function(origin) {
     if (bad) {
@@ -102,7 +102,7 @@ allowOrigins: function(origin) {
 
 #### `auth: {Function|String}`
 
-* Function: Called with the contents of the auth header:
+* __Function__: Called with the contents of the auth header:
 
 ```javascript
             auth: function(authorizationHeader) {
@@ -113,7 +113,7 @@ allowOrigins: function(origin) {
             },
 ```
 
-* String: the contents of the auth header will be checked against the string for an exact match (`===`):
+* __String__: the contents of the auth header will be checked against the string for an exact match (`===`):
 
 ```javascript
             auth: 'SOMEARBITRARYSTRINGTOCHECK',
