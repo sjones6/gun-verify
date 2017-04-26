@@ -42,6 +42,7 @@ const verifyAuth = function(check, authHeader) {
 
 Gun.on('opt', function(context) {
     let {ws} = context.opt;
+    ws = ws || {};
 
     /**
      *  verify when instantiating Gun can contain the following keys:
@@ -119,6 +120,7 @@ Gun.on('opt', function(context) {
             }
         }          
     };
+    context.opt.ws = ws;
 
     // Pass to next plugins
     this.to.next(context);
