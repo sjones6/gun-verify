@@ -174,10 +174,14 @@ Example using return (must return a boolean):
 
 ## A Word of Caution
 
-Verify is called every couple of seconds while the Websocket is open. It is prudent to add as little overhead as possible (e.g., expensive database calls or the like should be avoided). 
+If you're using `ws`, verify is called every couple of seconds while the Websocket is open. It is prudent to add as little overhead as possible (e.g., expensive database calls or the like should be avoided). 
 
 However, if sessions should be time based and require re-authentication, the frequent checks could be advantageous since the socket connection can be rejected quickly.
+
+If you're using `uWS` for your server, the verification check is much less frequent.
 
 ## How it works
 
 Under the hood, gun-verify makes use of the [ws verifyClient](https://github.com/websockets/ws/blob/master/doc/ws.md) option with some convenience wrappers.
+
+The alternative Websocket server, `uWS`, also supports gun-verify.
