@@ -121,9 +121,15 @@ If `auth` is a string, the contents of the auth header will be checked against t
 
 By default, `auth` will check the `authorization` header. If you want to use a custom header, pass `authHeader` with the name of the header to check.
 
+```javascript
+            authHeader: 'X-MYSPECIAL-HEADER',
+```
+
 #### check {Function}
 
-The `check` function receives two parameters: `connectionInfo` contains information about the connecting client, and a callback that can be called.
+The `check` function receives three parameters: `connectionInfo` which contains information about the connecting client, a success callback, and an error callback.
+
+Alternatively, you can simply return a boolean to indicate whether or not the connection should be accepted.
 
 Example using the callback:
 ```javascript
@@ -166,8 +172,10 @@ Example using return (must return a boolean):
 
 ## A Word of Caution
 
-Verify is called every couple of seconds while the Websocket is open. It is prudent to add as little overhead as possible (e.g., expensive database calls or the like). 
+Verify is called every couple of seconds while the Websocket is open. It is prudent to add as little overhead as possible (e.g., expensive database calls or the like should be avoided). 
 
-However, if sessions should be time based and require re-authentication, then this is advantageous.
+However, if sessions should be time based and require re-authentication, the frequent checks could be advantageous since the socket connection can be rejected quickly.
 
-Under the hood, gun-verify makes use of the [ws verifyClient](https://github.com/websockets/ws/blob/master/doc/ws.md) option.
+## How it works
+
+Under the hood, gun-verify makes use of the [ws verifyClient](https://github.com/websockets/ws/blob/master/doc/ws.md) option with some convenience wrappers.
