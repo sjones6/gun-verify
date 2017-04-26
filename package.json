@@ -1,0 +1,24 @@
+{
+  "name": "gun-verify",
+  "version": "0.0.1",
+  "description": "A plugin to verify WS connections to your gun server",
+  "main": "gun-verify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjones6/gun-verify.git"
+  },
+  "keywords": [
+    "gun",
+    "WS",
+    "verify-client"
+  ],
+  "author": "sjones6",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sjones6/gun-verify/issues"
+  },
+  "homepage": "https://github.com/sjones6/gun-verify#readme"
+}
