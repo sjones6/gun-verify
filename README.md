@@ -4,7 +4,9 @@ Gun Verify provides an easy layer to verify client connections to your Gun serve
 
 # Installation
 
-`yarn add gun-verify` or `npm install gun-verify --save`
+Yarn: `yarn add gun-verify`
+
+NPM: `npm install gun-verify --save`
 
 # Usage
 
@@ -61,19 +63,19 @@ let gun = new Gun({
 
 All of the options passed into `verify` are indeed options. However, if none are supplied, then gun-verify will make little sense as an addition since no verification checks will be added.
 
-#### requireSecure {Boolean}
+#### `requireSecure: {Boolean}`
 
 If true, the request must have either `req.connection.authorized` or `req.connection.encrypted` to be set.
 
-#### allowOrigins {String|Array|RegExp|Function}
+#### `allowOrigins: {String|Array|RegExp|Function}`
 
-If `allowOrigins` is a string, the origin is compared against the string for an exact match:
+* String: origin is compared against the string for an exact match:
 
 ```javascript
 allowOrigins: 'http://your-url.com',
 ```
 
-If `allowOrigins` is an array, the origin is checked against the string present in the array.
+* Array: the origin is checked against the string present in the array for an exact match:
 
 ```javascript
 allowOrigins: [
@@ -82,13 +84,13 @@ allowOrigins: [
 ],
 ```
 
-If `allowOrigins` is a RegExp, the origin tested against the RegExp.
+* RegExp: the origin tested against the RegExp using `RegExp.test`:
 
 ```javascript
 allowOrigins: /^(optionalsubdomain\.)?yoururl\.com$/,
 ```
 
-If `allowOrigins` is a function, then it will be called with the origin as it's only parameter. The function should return a truthy or falsy value:
+* Function: The function will be called with the origin as it's only parameter. The function should return a truthy or falsy value:
 ```javascript
 allowOrigins: function(origin) {
     if (bad) {
@@ -98,9 +100,9 @@ allowOrigins: function(origin) {
 }
 ```
 
-#### auth {Function|String}
+#### `auth: {Function|String}`
 
-If `auth` is a function, it will be called with the contents of the auth header:
+* Function: Called with the contents of the auth header:
 
 ```javascript
             auth: function(authorizationHeader) {
@@ -111,21 +113,21 @@ If `auth` is a function, it will be called with the contents of the auth header:
             },
 ```
 
-If `auth` is a string, the contents of the auth header will be checked against the string for an exact match (`===`):
+* String: the contents of the auth header will be checked against the string for an exact match (`===`):
 
 ```javascript
             auth: 'SOMEARBITRARYSTRINGTOCHECK',
 ```
 
-#### authHeader {String}
+#### `authHeader: {String}`
 
-By default, `auth` will check the `authorization` header. If you want to use a custom header, pass `authHeader` with the name of the header to check.
+By default, `auth` will check the `authorization` header. If you want to use a custom header, `authHeader` will look for that header instead.
 
 ```javascript
             authHeader: 'X-MYSPECIAL-HEADER',
 ```
 
-#### check {Function}
+#### `check: {Function}`
 
 The `check` function receives three parameters: `connectionInfo` which contains information about the connecting client, a success callback, and an error callback.
 
