@@ -1,5 +1,8 @@
 # Gun-Verify
 
+*** This package has been deprecated and it's functionality moved into GUN core. See [PR 369](https://github.com/amark/gun/pull/369) ***
+
+
 Gun Verify provides an easy layer to verify client connections to your Gun server instances.
 
 # Installation
